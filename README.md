@@ -10,7 +10,7 @@ The assessment consists of multiple questions that test my skills in data retrie
 
 The README.md documentation explains each question's approach, challenges, and solution.
 
-### Question 1 High-Value Customers with Multiple Products
+## Question 1 High-Value Customers with Multiple Products
 #### Objective
 The goal was to identify customers with at least one funded savings plan AND one funded investment plan, sorted by total deposits. This information can help the business explore cross-selling opportunities.
 
@@ -42,3 +42,42 @@ I ordered the results by total deposits in descending order to prioritize custom
 
 #### Outcome
 This structured approach effectively helped me to identifie high-value customers who have both types of plans and provides a clear view of their total contributions, aiding in potential marketing strategies.
+
+
+## Explanation Approach to Question 2: Transaction Frequency Analysis
+
+#### Objective:
+#### To categorize customers based on their transaction frequency:
+#### High Frequency (≥10 transactions/month)
+#### Medium Frequency (3-9 transactions/month), and 
+#### Low Frequency (≤2 transactions/month).
+
+#### Steps Taken
+
+#### Identifying Relevant Tables:
+#### Used users_customuser for customer data and savings_savingsaccount for transaction records.
+
+#### Join Tables:
+Joining users_customuser with savings_savingsaccount on the customer ID to link customers with their transaction records.
+
+#### Count Transactions:
+I Utilized COUNT(*) with a GROUP BY clause to count transactions per customer, grouped by month.
+
+#### Categorize Frequency:
+I implemented a CASE statement to classify customers based on their transaction count.
+
+#### Filter Active Customers:
+By adding a condition to consider only active customers.
+
+#### Sorting Results:
+Irdered results by customer ID for clarity.
+
+#### Challenges and Resolution
+Determining the monthly frequency required careful date handling.
+Using date functions to extract the month and year for accurate grouping.
+
+#### Handling NULL Values:
+Some customers may have no transactions and I used left join and filtered out NULLs in the final output.
+
+Ensuring the query performed well with large datasets, optimized joins and used indexing where applicable.
+This approach successfully categorized customers based on their transaction frequency, providing valuable insights for marketing strategies.

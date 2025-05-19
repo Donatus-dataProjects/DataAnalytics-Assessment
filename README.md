@@ -81,3 +81,42 @@ Some customers may have no transactions and I used left join and filtered out NU
 
 Ensuring the query performed well with large datasets, optimized joins and used indexing where applicable.
 This approach successfully categorized customers based on their transaction frequency, providing valuable insights for marketing strategies.
+
+
+## Explanation of Approach to Question 3: Account Inactivity Alert
+
+#### Objective
+The goal is to identify active accounts with no inflow transactions for over one year, allowing the business to take proactive measures for customer engagement.
+
+#### Steps Taken
+
+#### Identifying Relevant Tables:
+Using plans_plan for account details and savings_savingsaccount for transaction records.
+
+#### Join Tables:
+Performing a left join between plans_plan and savings_savingsaccount on plan_id to connect accounts with their transaction history.
+
+#### Determining Account Type:
+Useinga CASE statement to classify each account as "Savings," "Investment," or "Other."
+
+#### Calculate Last Transaction Date:
+Utilizing MAX(s.transaction_date) to find the most recent transaction date for each account.
+
+#### Filtering for Inactivity:
+Applying conditions in the HAVING clause to check for accounts with no transactions in the last year and ensured the last transaction occurred in 2024.
+
+#### Sorting Results:
+Ordering results by the number of inactivity days to prioritize accounts with the longest inactivity.
+
+#### Challenges and Resolution:
+Establishing a clear definition for inactivity required careful consideration and reviewing business needs to set the inactivity threshold at one year.
+
+#### Handling NULL Values:
+Ensuring accounts without transactions were correctly identified.
+Used left joins and filtered in the HAVING clause to avoid NULL transactions.
+
+#### Performance Optimization:
+Ensuring the query performed efficiently with potentially large datasets.
+Optimizing joins and indexed key columns to improve query execution time.
+
+This approach effectively identifies accounts at risk of inactivity, allowing for targeted outreach strategies to reduce churn.
